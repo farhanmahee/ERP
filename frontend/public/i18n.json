@@ -1,0 +1,6 @@
+{
+  "locales": ["en", "es", "fr"],
+  "defaultLocale": "en",
+  "fallbackLng": "en",
+  "debug": false
+}

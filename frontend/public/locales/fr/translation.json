@@ -1,0 +1,20 @@
+{
+  "welcome": "Bienvenue dans l'ERP de Cylindres de Gaz",
+  "login": "Connexion",
+  "logout": "Déconnexion",
+  "dashboard": "Tableau de bord",
+  "branches": "Succursales",
+  "warehouses": "Entrepôts",
+  "inventory": "Inventaire",
+  "orders": "Commandes",
+  "payment": "Paiement",
+  "reports": "Rapports",
+  "attendance": "Présence",
+  "gpsTracking": "Suivi GPS",
+  "codeGenerator": "Générateur de Codes-barres et QR",
+  "ecommerce": "E-Commerce",
+  "save": "Enregistrer",
+  "cancel": "Annuler",
+  "edit": "Éditer",
+  "delete": "Supprimer"
+}

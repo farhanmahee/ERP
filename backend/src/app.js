@@ -3,11 +3,13 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
+const logAudit = require('./middleware/auditLog');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(logAudit);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/gas-cylinder-erp', {

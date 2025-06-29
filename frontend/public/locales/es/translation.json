@@ -1,0 +1,20 @@
+{
+  "welcome": "Bienvenido al ERP de Cilindros de Gas",
+  "login": "Iniciar sesión",
+  "logout": "Cerrar sesión",
+  "dashboard": "Tablero",
+  "branches": "Sucursales",
+  "warehouses": "Almacenes",
+  "inventory": "Inventario",
+  "orders": "Pedidos",
+  "payment": "Pago",
+  "reports": "Informes",
+  "attendance": "Asistencia",
+  "gpsTracking": "Seguimiento GPS",
+  "codeGenerator": "Generador de Códigos de Barras y QR",
+  "ecommerce": "Comercio electrónico",
+  "save": "Guardar",
+  "cancel": "Cancelar",
+  "edit": "Editar",
+  "delete": "Eliminar"
+}

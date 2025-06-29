@@ -1,6 +1,7 @@
 const express = require('express');
 const Inventory = require('../models/Inventory');
 const { authenticateToken, authorizeRoles } = require('../middleware/auth');
+const logAudit = require('../middleware/auditLog');
 
 const router = express.Router();
 
@@ -9,6 +10,7 @@ router.post('/', authenticateToken, authorizeRoles('admin', 'manager'), async (r
   try {
     const inventory = new Inventory(req.body);
     await inventory.save();
+    logAudit({ user: req.user?.id, action: 'create', resource: 'inventory', details: inventory });
     res.status(201).json(inventory);
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -37,10 +39,11 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update an inventory item by ID
-router.put('/:id', async (req, res) => {
+router.put('/:id', authenticateToken, authorizeRoles('admin', 'manager'), async (req, res) => {
   try {
     const inventory = await Inventory.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!inventory) return res.status(404).json({ message: 'Inventory item not found' });
+    logAudit({ user: req.user?.id, action: 'update', resource: 'inventory', details: inventory });
     res.json(inventory);
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -48,10 +51,11 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete an inventory item by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authenticateToken, authorizeRoles('admin', 'manager'), async (req, res) => {
   try {
     const inventory = await Inventory.findByIdAndDelete(req.params.id);
     if (!inventory) return res.status(404).json({ message: 'Inventory item not found' });
+    logAudit({ user: req.user?.id, action: 'delete', resource: 'inventory', details: inventory });
     res.json({ message: 'Inventory item deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });

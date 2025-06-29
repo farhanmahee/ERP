@@ -1,0 +1,20 @@
+{
+  "welcome": "Welcome to Gas Cylinder ERP",
+  "login": "Login",
+  "logout": "Logout",
+  "dashboard": "Dashboard",
+  "branches": "Branches",
+  "warehouses": "Warehouses",
+  "inventory": "Inventory",
+  "orders": "Orders",
+  "payment": "Payment",
+  "reports": "Reports",
+  "attendance": "Attendance",
+  "gpsTracking": "GPS Tracking",
+  "codeGenerator": "Barcode & QR Code Generator",
+  "ecommerce": "E-Commerce",
+  "save": "Save",
+  "cancel": "Cancel",
+  "edit": "Edit",
+  "delete": "Delete"
+}

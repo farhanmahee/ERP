@@ -14,6 +14,7 @@ import CodeGenerator from './pages/CodeGenerator';
 import ECommerce from './pages/ECommerce';
 import AttendancePage from './pages/AttendancePage';
 import ReportsPage from './pages/ReportsPage';
+import './i18n';
 
 function App() {
   const isAuthenticated = !!localStorage.getItem('token');
