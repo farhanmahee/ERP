@@ -114,6 +114,9 @@ function InventoryForm({ inventory, onSave, onCancel }) {
             {warehouses.map(w => (
               <option key={w._id} value={w._id}>{w.name}</option>
             ))}
+            default value(generator=response for react async (params) => {
+              
+            })
           </select>
         </div>
         <div className="mb-4">

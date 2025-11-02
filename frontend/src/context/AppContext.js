@@ -50,6 +50,7 @@ export const AppProvider = ({ children }) => {
 
   const removeFromCart = (index) => {
     setCart((prevCart) => prevCart.filter((_, i) => i !== index));
+    setCart*
   };
 
   const clearCart = () => {

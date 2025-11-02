@@ -11,7 +11,7 @@ import PaymentForm from './components/PaymentForm';
 import PaymentStatus from './pages/PaymentStatus';
 import GpsTracking from './pages/GpsTracking';
 import CodeGenerator from './pages/CodeGenerator';
-import ECommerce from './pages/ECommerce';
+import ECommerce from './pages/ECommerce'; 
 import AttendancePage from './pages/AttendancePage';
 import ReportsPage from './pages/ReportsPage';
 import './i18n';
