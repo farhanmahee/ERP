@@ -10,7 +10,7 @@
     "db:generate": "pnpm --filter @erp/database db:generate",
     "db:push": "pnpm --filter @erp/database db:push",
     "api:dev": "pnpm --filter @erp/api start:dev",
-    "genkit:dev": "cd apps/genkit && genkit start"
+    "genkit:dev": "pnpm --filter @erp/genkit dev"
   },
   "dependencies": {
     "@google/genai": "^1.30.0",

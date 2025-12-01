@@ -1,0 +1,8 @@
+{
+  "name": "@erp/genkit",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "genkit start"
+  }
+}
