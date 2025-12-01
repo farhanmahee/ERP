@@ -3,29 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "pnpm api:dev & pnpm genkit:dev",
+    "build": "vite build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "pnpm --filter @erp/database db:generate",
     "db:push": "pnpm --filter @erp/database db:push",
-    "api:dev": "pnpm --filter @erp/api start:dev"
+    "api:dev": "pnpm --filter @erp/api start:dev",
+    "genkit:dev": "cd apps/genkit && genkit start"
   },
   "dependencies": {
-    "@google/genai": "^0.1.1",
+    "@google/genai": "^0.2.1",
+    "firebase-admin": "^12.0.0",
     "lucide-react": "^0.344.0",
     "next": "14.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@genkit-ai/core": "^1.0.0",
+    "@genkit-ai/google": "^1.0.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
-    "autoprefixer": "^10.4.18",
+    "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
+    "turbo": "^1.12.4",
     "typescript": "^5.3.3",
-    "turbo": "^1.12.4"
+    "vite": "^5.1.4",
+    "genkit": "^1.24.0",
+    "tsx": "^4.7.1"
   }
 }

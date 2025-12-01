@@ -1,11 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { initializeFirebase } from './config/firebase.config';
+import './firebase.config'; // Import to initialize Firebase
 
 async function bootstrap() {
-  initializeFirebase(); // Initialize Firebase
-
   const app = await NestFactory.create(AppModule);
   
   app.enableCors();

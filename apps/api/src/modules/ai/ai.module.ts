@@ -1,12 +1,10 @@
+
 import { Module } from '@nestjs/common';
 import { AiController } from './ai.controller';
-import { AiService } from './ai.service';
-import { PrismaModule } from '../../prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule],
+  imports: [],
   controllers: [AiController],
-  providers: [AiService],
-  exports: [AiService],
+  providers: [], // AiService has been removed
 })
 export class AiModule {}

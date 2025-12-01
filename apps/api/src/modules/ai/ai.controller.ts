@@ -1,23 +1,41 @@
-import { Controller, Post, Body, Req, UnauthorizedException } from '@nestjs/common';
-import { AiService } from './ai.service';
+
+import { Controller, Post, Body, Req, UnauthorizedException, InternalServerErrorException, Logger } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
+import { erpInsightFlow } from '../../../../genkit/src/index'; // Adjust path to your Genkit flow
+import { run } from '@genkit-ai/core';
 
 @ApiTags('AI')
 @Controller('ai')
 @ApiBearerAuth()
 export class AiController {
-  constructor(private aiService: AiService) {}
+  private readonly logger = new Logger(AiController.name);
+
+  // The AiService is no longer needed here.
+  constructor() {}
 
   @Post('chat')
-  @ApiOperation({ summary: 'Chat with Gemini 3 Pro about ERP data' })
+  @ApiOperation({ summary: 'Chat with Gemini about ERP data using Genkit' })
   async chat(@Body() body: { message: string }, @Req() req: any) {
     const tenantId = req.headers['x-tenant-id'];
     if (!tenantId) {
-       // Ideally handled by middleware, but redundant check for safety
-       throw new UnauthorizedException('Tenant context required for AI analysis');
+      throw new UnauthorizedException('Tenant ID is required for AI analysis.');
     }
-    
-    // Pass tenantId to service to ensure data isolation during function calls
-    return this.aiService.processChat(body.message, tenantId);
+
+    try {
+      this.logger.log(`Executing erpInsightFlow for tenant: ${tenantId}`);
+      
+      // Run the Genkit flow with the required input
+      const response = await run(erpInsightFlow, { 
+        tenantId,
+        message: body.message 
+      });
+
+      // Return the text response
+      return { text: response };
+
+    } catch (error) {
+      this.logger.error('Error executing Genkit flow', error);
+      throw new InternalServerErrorException('An error occurred while processing your request with the AI.');
+    }
   }
 }
