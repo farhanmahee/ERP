@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insight ERP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4338ca', // Indigo 700 (Active/Brand)
+              secondary: '#64748b', // Slate 500
+              accent: '#6366f1', // Indigo 500
+              accentHover: '#4f46e5',
+              background: '#f1f5f9', // Light Gray/Blue background
+              surface: '#ffffff',
+              sidebar: '#ffffff',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              'soft': '0 2px 10px rgba(0, 0, 0, 0.03)',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "next": "https://aistudiocdn.com/next@^16.0.5",
+    "@nestjs/common": "https://aistudiocdn.com/@nestjs/common@^11.1.9",
+    "@nestjs/core": "https://aistudiocdn.com/@nestjs/core@^11.1.9",
+    "@nestjs/swagger": "https://aistudiocdn.com/@nestjs/swagger@^11.2.3",
+    "@prisma/client": "https://aistudiocdn.com/@prisma/client@^7.0.1",
+    "express": "https://aistudiocdn.com/express@^5.1.0",
+    "bcrypt": "https://aistudiocdn.com/bcrypt@^6.0.0",
+    "@nestjs/jwt": "https://aistudiocdn.com/@nestjs/jwt@^11.0.1",
+    "passport-jwt": "https://aistudiocdn.com/passport-jwt@^4.0.1",
+    "@nestjs/passport": "https://aistudiocdn.com/@nestjs/passport@^11.0.5",
+    "firebase-admin": "https://aistudiocdn.com/firebase-admin@^13.6.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-background text-slate-900 antialiased font-sans">
+    <div id="root"></div>
+  </body>
+</html>
