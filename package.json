@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter @erp/api start:dev & pnpm --filter @erp/genkit dev",
+    "dev": "turbo dev",
     "build": "vite build",
     "start": "next start",
     "lint": "next lint",
