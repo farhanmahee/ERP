@@ -1,6 +1,6 @@
 
 import { configureGenkit, defineFlow, generate } from '@genkit-ai/core';
-import { googleAI } from '@genkit-ai/google'; // Corrected import path
+import { googleAI } from '@genkit-ai/googleai'; // Corrected import path
 import { z } from 'zod';
 import * as path from 'path';
 
