@@ -91,7 +91,8 @@ export const MOCK_INVENTORY: Item[] = [
     salesPrice: 800,
     stockInHouse: 150,
     stockWithCustomer: 45,
-    stockInTransit: 20
+    stockInTransit: 20,
+    alertQuantity: 20
   },
   {
     id: 'ITM002',
@@ -105,7 +106,8 @@ export const MOCK_INVENTORY: Item[] = [
     salesPrice: 1350,
     stockInHouse: 300,
     stockWithCustomer: 120,
-    stockInTransit: 50
+    stockInTransit: 50,
+    alertQuantity: 50
   },
   {
     id: 'ITM003',
@@ -119,7 +121,8 @@ export const MOCK_INVENTORY: Item[] = [
     salesPrice: 18000,
     stockInHouse: 50, // Empty shells ready to be sent for filling
     stockWithCustomer: 45, // Matches refill
-    stockInTransit: 0
+    stockInTransit: 0,
+    alertQuantity: 60 // Low stock example (Stock 50 < Alert 60)
   },
   {
     id: 'ITM004',
@@ -133,7 +136,8 @@ export const MOCK_INVENTORY: Item[] = [
     salesPrice: 1800,
     stockInHouse: 85,
     stockWithCustomer: 0,
-    stockInTransit: 0
+    stockInTransit: 0,
+    alertQuantity: 10
   }
 ];
 

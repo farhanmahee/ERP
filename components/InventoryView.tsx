@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Item, ItemType } from '../types';
 import { Button } from './Button';
-import { Search, Plus, Package, MoreHorizontal, Upload, Pencil, ArrowLeft } from 'lucide-react';
+import { Search, Plus, Package, MoreHorizontal, Upload, Pencil, ArrowLeft, AlertTriangle } from 'lucide-react';
 
 interface InventoryViewProps {
   inventory: Item[];
@@ -80,23 +80,55 @@ export const InventoryView: React.FC<InventoryViewProps> = ({ inventory }) => {
                    </div>
                </div>
                
-               {/* Form Content reuse from previous step, just ensure styles match */}
                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                    <div className="lg:col-span-2 space-y-6">
                        <div className="bg-white p-6 rounded-xl shadow-soft border border-slate-100">
                            <div className="space-y-4">
-                               {/* ... Inputs ... */}
                                <div>
                                    <label className="block text-sm font-medium text-slate-700 mb-1">Name <span className="text-red-500">*</span></label>
                                    <input type="text" className="w-full border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 outline-none transition-all" defaultValue={isEdit ? editingItem?.name : ''} />
                                </div>
-                               {/* ... other inputs simplified for brevity ... */}
+                               <div className="grid grid-cols-2 gap-4">
+                                   <div>
+                                       <label className="block text-sm font-medium text-slate-700 mb-1">Code/SKU</label>
+                                       <input type="text" className="w-full border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 outline-none transition-all" defaultValue={isEdit ? editingItem?.code : ''} />
+                                   </div>
+                                   <div>
+                                       <label className="block text-sm font-medium text-slate-700 mb-1">Brand</label>
+                                       <input type="text" className="w-full border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 outline-none transition-all" defaultValue={isEdit ? editingItem?.brand : ''} />
+                                   </div>
+                               </div>
+                               <div className="grid grid-cols-3 gap-4">
+                                   <div>
+                                       <label className="block text-sm font-medium text-slate-700 mb-1">Purchase Price</label>
+                                       <input type="number" className="w-full border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 outline-none transition-all" defaultValue={isEdit ? editingItem?.purchasePrice : ''} />
+                                   </div>
+                                   <div>
+                                       <label className="block text-sm font-medium text-slate-700 mb-1">Sales Price</label>
+                                       <input type="number" className="w-full border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 outline-none transition-all" defaultValue={isEdit ? editingItem?.salesPrice : ''} />
+                                   </div>
+                                   <div>
+                                       <label className="block text-sm font-medium text-slate-700 mb-1">Stock</label>
+                                       <input type="number" className="w-full border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 outline-none transition-all" defaultValue={isEdit ? editingItem?.stockInHouse : ''} />
+                                   </div>
+                               </div>
+                               <div>
+                                   <label className="block text-sm font-medium text-slate-700 mb-1 flex items-center gap-2">
+                                       Alert Quantity <AlertTriangle className="h-3 w-3 text-amber-500" />
+                                   </label>
+                                   <input 
+                                      type="number" 
+                                      className="w-full border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 outline-none transition-all" 
+                                      defaultValue={isEdit ? editingItem?.alertQuantity : 0} 
+                                      placeholder="Min stock level for alert"
+                                   />
+                                   <p className="text-xs text-slate-400 mt-1">Set the stock level at which to trigger low stock warnings.</p>
+                               </div>
                            </div>
                        </div>
                    </div>
                    <div className="space-y-6">
                         <div className="bg-white p-6 rounded-xl shadow-soft border border-slate-100 space-y-4">
-                             {/* ... Category/Brand inputs ... */}
                              <div className="border-2 border-dashed border-slate-200 rounded-xl p-8 flex flex-col items-center justify-center text-slate-400 hover:bg-slate-50 cursor-pointer transition-colors">
                                  <Upload className="h-8 w-8 mb-2 text-indigo-500"/>
                                  <span className="text-sm font-medium text-slate-600">Upload Image</span>
@@ -172,9 +204,10 @@ export const InventoryView: React.FC<InventoryViewProps> = ({ inventory }) => {
                                         <div className="text-xs text-slate-400">{item.code} • {item.brand}</div>
                                     </td>
                                     <td className="px-6 py-4 text-center">
-                                        <span className={`font-semibold ${item.stockInHouse <= (item.alertQuantity || 0) ? 'text-red-600' : 'text-slate-700'}`}>
-                                            {item.stockInHouse} <span className="text-xs font-normal text-slate-400">{item.unit}</span>
-                                        </span>
+                                        <div className={`flex items-center justify-center gap-2 font-semibold ${item.stockInHouse <= (item.alertQuantity || 0) ? 'text-red-600' : 'text-slate-700'}`}>
+                                            {item.stockInHouse <= (item.alertQuantity || 0) && <AlertTriangle className="h-4 w-4" />}
+                                            <span>{item.stockInHouse} <span className="text-xs font-normal text-slate-400">{item.unit}</span></span>
+                                        </div>
                                     </td>
                                     <td className="px-6 py-4 text-center">
                                         {item.stockInTransit > 0 ? (
