@@ -2,14 +2,14 @@
   "name": "erp-system-monorepo",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.24.0",
   "scripts": {
-    "dev": "turbo dev",
-    "build": "vite build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "pnpm --filter @erp/database db:generate",
-    "db:push": "pnpm --filter @erp/database db:push"
+    "db:push": "pnpm --filter @erp/database db:push",
+    "api:dev": "pnpm --filter @erp/api start:dev"
   },
   "dependencies": {
     "@genkit-ai/core": "^1.0.0",
