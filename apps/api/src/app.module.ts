@@ -11,6 +11,10 @@ import { HrModule } from './modules/hr/hr.module';
 import { IntegrationsModule } from './modules/integrations/integrations.module';
 import { SecurityModule } from './modules/security/security.module';
 import { AiModule } from './modules/ai/ai.module';
+import { DatabaseModule } from './modules/database/database.module';
+import { SyncModule } from './modules/sync/sync.module';
+import { LoggingModule } from './modules/logging/logging.module';
+import { SeederModule } from './modules/seeder/seeder.module';
 
 @Module({
   imports: [
@@ -27,7 +31,11 @@ import { AiModule } from './modules/ai/ai.module';
     HrModule,
     IntegrationsModule,
     SecurityModule,
-    AiModule
+    AiModule,
+    DatabaseModule,
+    SyncModule,
+    LoggingModule,
+    SeederModule
   ],
   controllers: [],
   providers: [],
